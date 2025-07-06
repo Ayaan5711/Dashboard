@@ -241,7 +241,7 @@ The application processes CSV data to calculate:
 - Verify all files are loaded correctly
 - Ensure localStorage is enabled in your browser
 
-!
+![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard.git/images/1.png)
 ## 🔮 Future Scope
 
 - 💾 **Persistent Database Integration**: Replace in-memory storage with a persistent database like PostgreSQL or MySQL to retain summaries across restarts.
