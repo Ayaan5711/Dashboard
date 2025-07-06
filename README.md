@@ -30,7 +30,7 @@ A web application to upload CSV sales data and view dynamic summaries for each u
 ## 🚀 Project Objective
 
 This application allows users to:
-- Upload CSV files containing fictional sales data.
+- Upload CSV files containing  sales data.
 - Process and extract key metrics like total revenue, quantity, and record count.
 - View all uploaded summaries in a dashboard with modal-based detail view.
 - Operate entirely in-memory, with no persistent storage, making it lightweight and fast.
