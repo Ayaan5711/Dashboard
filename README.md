@@ -242,10 +242,8 @@ The application processes CSV data to calculate:
 - Ensure localStorage is enabled in your browser
 
 ![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/1.png)
-![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/2.png)
-![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/3.png)
 ![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/4.png)
-![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/5.png)
+![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/3.png)
 ![Dashboard](https://github.com/Ayaan5711/Innotek-Dashboard/blob/main/images/6.png)
 ## 🔮 Future Scope
 
