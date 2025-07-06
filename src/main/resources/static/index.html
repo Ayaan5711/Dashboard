@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Sales Data Uploader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <i class="fas fa-chart-line"></i>
+            <span>Sales Dashboard</span>
+        </div>
+        <div class="nav-menu">
+            <a href="#" class="nav-link active" id="home-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-link" id="dashboard-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main class="main-content">
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">
+                    <i class="fas fa-upload"></i>
+                    CSV Sales Data Uploader
+                </h1>
+                <p class="hero-subtitle">
+                    Upload your sales data CSV files and get instant insights with our dynamic dashboard
+                </p>
+            </div>
+
+            <div class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <i class="fas fa-file-csv"></i>
+                        <h2>Upload CSV File</h2>
+                    </div>
+
+                    <form id="upload-form" class="upload-form">
+                        <div class="file-input-container">
+                            <input type="file" id="csv-file" accept=".csv" class="file-input" required>
+                            <label for="csv-file" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span class="file-text">Choose CSV file or drag it here</span>
+                                <span class="file-hint">Supports .csv files only</span>
+                            </label>
+                        </div>
+
+                        <div class="file-preview" id="file-preview" style="display: none;">
+                            <div class="preview-content">
+                                <i class="fas fa-file-csv"></i>
+                                <div class="file-info">
+                                    <span class="file-name" id="file-name"></span>
+                                    <span class="file-size" id="file-size"></span>
+                                </div>
+                                <button type="button" class="remove-file" id="remove-file">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="upload-btn" id="upload-btn" disabled>
+                            <i class="fas fa-upload"></i>
+                            <span>Upload & Process</span>
+                        </button>
+                    </form>
+
+                    <div class="upload-status" id="upload-status" style="display: none;">
+                        <div class="status-content">
+                            <div class="status-icon">
+                                <div class="loader" id="loader" style="display: none;"></div>
+                                <i class="fas fa-spinner fa-spin" id="status-icon"></i>
+                            </div>
+                            <div class="status-text">
+                                <h3 id="status-title">Processing...</h3>
+                                <p id="status-message">Please wait while we process your file</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" id="progress-bar" style="display: none;">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-section">
+                    <h3>Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-chart-bar"></i>
+                            <h4>Data Analytics</h4>
+                            <p>Get comprehensive insights from your sales data</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>Real-time Processing</h4>
+                            <p>Instant processing and results display</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-history"></i>
+                            <h4>Session History</h4>
+                            <p>View all uploaded summaries in one place</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Page -->
+    <section id="dashboard-page" class="page">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Sales Dashboard
+                </h1>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-upload"></i>
+                        <div class="stat-content">
+                            <span class="stat-number" id="total-uploads">0</span>
+                            <span class="stat-label">Total Uploads</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div class="stat-content">
+                            <span class="stat-number" id="total-revenue">$0</span>
+                            <span class="stat-label">Total Revenue</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar"></i>
+                        <div class="stat-content">
+                            <span class="stat-number" id="session-uploads">0</span>
+                            <span class="stat-label">This Session</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="content-header">
+                    <h2>Upload History</h2>
+                    <div class="actions">
+                        <button class="btn btn-secondary" id="refresh-data">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="loading-overlay" id="dashboard-loading" style="display: none;">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading dashboard data...</p>
+                    </div>
+                </div>
+
+                <div class="uploads-table-container">
+                    <table class="uploads-table" id="uploads-table">
+                        <thead>
+                        <tr>
+                            <th>Summary ID</th>
+                            <th>Upload Timestamp</th>
+                            <th>Total Revenue</th>
+                            <th>Total Records</th>
+                            <th>Total Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="uploads-tbody">
+                        <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+
+                    <div class="empty-state" id="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No uploads yet</h3>
+                        <p>Upload your first CSV file to see the dashboard in action</p>
+                        <button class="btn btn-primary" onclick="showHomePage()">
+                            <i class="fas fa-upload"></i>
+                            Upload File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Modal -->
+    <div class="modal" id="summary-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sales Summary Details</h2>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-loading" id="modal-loading" style="display: none;">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading details...</p>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Summary details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon" id="toast-icon"></i>
+            <span class="toast-message" id="toast-message"></span>
+        </div>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
